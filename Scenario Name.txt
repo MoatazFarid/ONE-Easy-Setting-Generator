@@ -15,9 +15,27 @@
 
  Scenario.maxhopcount = 2
 
-
  Scenario.nrofHostGroups = 5
 
  # How many event generators
 
  Events.nrof = 1
+#
+## Interface-specific settings:
+# type : which interface class the interface belongs to
+# For different types, the sub-parameters are interface-specific
+# For SimpleBroadcastInterface, the parameters are:
+# transmitSpeed : transmit speed of the interface (bytes per second)
+# transmitRange : range of the interface (meters)
+# "Bluetooth" interface for all nodes
+btInterface.type = SimpleBroadcastInterface
+#
+btInterface.transmitSpeed = 250k
+#	
+btInterface.transmitRange = 10
+#
+highspeedInterface.type = SimpleBroadcastInterface
+# How many event generators
+highspeedInterface.transmitRange = 1000
+#
+highspeedInterface.transmitSpeed = 10M

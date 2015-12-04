@@ -95,8 +95,6 @@ public class InterfaceSpecficSettings {
 		BufferedWriter bw = new BufferedWriter(fw);
 		
 		// writing to file 
-		bw.write("#");
-		bw.newLine();
 		bw.write("btInterface.transmitSpeed = "+btInterface_transmitSpeed);
 		bw.newLine();
 		
@@ -129,8 +127,6 @@ public class InterfaceSpecficSettings {
 		BufferedWriter bw = new BufferedWriter(fw);
 
 		// writing to file 
-		bw.write("#	");
-		bw.newLine();
 		bw.write("btInterface.transmitRange = "+btInterface_transmitRange);
 		bw.newLine();
 		//close file 
@@ -162,8 +158,8 @@ public class InterfaceSpecficSettings {
 		BufferedWriter bw = new BufferedWriter(fw);
 
 		// writing to file 
-		bw.write("#");
 		bw.write("highspeedInterface.type = "+highspeedInterface_type);
+		bw.newLine();
 		
 		//close file 
 		bw.close();
@@ -195,8 +191,9 @@ public class InterfaceSpecficSettings {
 		BufferedWriter bw = new BufferedWriter(fw);
 
 		// writing to file 
-		bw.write("#");
+
 		bw.write("highspeedInterface.transmitSpeed = "+highspeedInterface_transmitSpeed);
+		bw.newLine();
 		
 		//close file 
 		bw.close();
@@ -229,7 +226,10 @@ public class InterfaceSpecficSettings {
 
 		// writing to file 
 		bw.write("# How many event generators");
+		bw.newLine();
+
 		bw.write("highspeedInterface.transmitRange = "+highspeedInterface_transmitRange);
+		bw.newLine();
 		
 		//close file 
 		bw.close();
