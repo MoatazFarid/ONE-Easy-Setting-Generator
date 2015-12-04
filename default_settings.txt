@@ -1,0 +1,6 @@
+Scenario.simulateConnections = true 
+ Scenario.updateInterval = 0.1 
+ # 43200s == 12h 
+ Scenario.endTime = 43200 
+Scenario.maxhopcount = 2 
+## Interface-specific settings:# type : which interface class the interface belongs to# For different types, the sub-parameters are interface-specific# For SimpleBroadcastInterface, the parameters are:# transmitSpeed : transmit speed of the interface (bytes per second)# transmitRange : range of the interface (meters)# "Bluetooth" interface for all nodesbtInterface.type = SimpleBroadcastInterface# Transmit speed of 2 Mbps = 250kBpsbtInterface.transmitSpeed = 250kbtInterface.transmitRange = 10# High speed, long range, interface for group 4highspeedInterface.type = SimpleBroadcastInterfacehighspeedInterface.transmitSpeed = 10MhighspeedInterface.transmitRange = 1000

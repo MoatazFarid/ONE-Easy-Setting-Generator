@@ -1,0 +1,23 @@
+
+ #
+
+ ## Default settings Generated for the simulation
+
+ #
+
+ ## Scenario settings
+
+ Scenario.name = Scenario Name
+
+ Scenario.simulateConnections = false
+
+ Scenario.updateInterval = 0.1
+
+ Scenario.maxhopcount = 2
+
+
+ Scenario.nrofHostGroups = 5
+
+ # How many event generators
+
+ Events.nrof = 1
