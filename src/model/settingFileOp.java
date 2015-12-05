@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
-import view.main;
+import view.main_UNUSED;
 
 public class settingFileOp {
 	public static  void setSettingfileName(String ScenarioName) throws FileNotFoundException, UnsupportedEncodingException{

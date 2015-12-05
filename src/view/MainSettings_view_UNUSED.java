@@ -1,4 +1,11 @@
 package view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -16,9 +23,8 @@ import javax.swing.JDialog;
 
 import model.settingFileOp;
 
-import controller.reportGenerate;
+public class MainSettings_view_UNUSED extends JFrame {
 
-public class main extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField_settingName;
@@ -33,44 +39,15 @@ public class main extends JFrame {
 	private JTextField textField_noOfHosts;
 	private JTextField textField_GroupSymbol;
 
-	public String get_settingName(){
-		return textField_settingName.getText();
-	}
-	
-	public 	int	get_nrofInterfaces(){
-		return Integer.parseInt(textField_nrofInterfaces.getText());
-	}
-	public 	int	get_bufferSize(){
-		return Integer.parseInt(textField_bufferSize.getText());
-	}
-	public 	int	get_waitTimeFrom(){
-		return Integer.parseInt(textField_waitTimeFrom.getText());
-	}
-	public 	int	get_waitTimeTo(){
-		return Integer.parseInt(textField_waitTimeTo.getText());
-	}
-	public 	int	get_speedFrom(){
-		return Integer.parseInt(textField_speedFrom.getText());
-	}
-	public 	int	get_speedTo(){
-		return Integer.parseInt(textField_speedTo.getText());
-	}
-	public 	int	get_msgTtl(){
-		return Integer.parseInt(textField_msgTtl.getText());
-	}
-	public 	int	get_noOfHosts(){
-		return Integer.parseInt(textField_noOfHosts.getText());
-	}
 
 	/**
 	 * Launch the application.
 	 */
-	public main frame;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					main frame = new main();
+					MainSettings_view_UNUSED frame = new MainSettings_view_UNUSED();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -79,10 +56,14 @@ public class main extends JFrame {
 		});
 	}
 
+	public String get_settingName(){
+		return textField_settingName.getText();
+	}
+
 	/**
 	 * Create the frame.
 	 */
-	public main() {
+	public MainSettings_view_UNUSED() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 425);
 		contentPane = new JPanel();
@@ -253,8 +234,6 @@ public class main extends JFrame {
 				//String no = textField_nrofInterfaces.getText();
 				int no = Integer.parseInt(textField_nrofInterfaces.getText());
 				try {
-					settingFileOp.setBluetoothInterfaces(get_nrofInterfaces());
-					
 					
 				} catch (Exception e) {
 					e.printStackTrace();
