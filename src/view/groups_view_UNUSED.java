@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class groups_view extends JFrame {
+public class groups_view_UNUSED extends JFrame {
 
 	private JPanel contentPane;
 
@@ -30,7 +30,7 @@ public class groups_view extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public groups_view() {
+	public groups_view_UNUSED() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

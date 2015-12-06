@@ -20,7 +20,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class interfaces extends JFrame {
+public class interfaces_unUsed extends JFrame {
 
 	private final JPanel contentPanel = new JPanel();
 	public static String NoOfinterfaces;
@@ -44,7 +44,7 @@ public class interfaces extends JFrame {
 	/**
 	 * Create the dialog.
 	 */
-	public interfaces(int NoOfinterfaces) {
+	public interfaces_unUsed(int NoOfinterfaces) {
 		// array contain the array of interfaces
 		interfaces = new String[NoOfinterfaces+1];
 		
