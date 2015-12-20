@@ -256,7 +256,8 @@ public class interfaceSpecificSettings_view extends JFrame {
 					InterfaceSpecficSettings.setHighspeedInterface_transmitSpeed(getTxtHighspeedinterfacetransmitspeed());
 					
 					// open next window
-					
+					commonGroupSettings_view nwin = new commonGroupSettings_view();
+					nwin.setVisible(true);
 					// dispose current window 
 					setVisible(false); //you can't see me!
 					dispose(); //Destroy the JFrame object

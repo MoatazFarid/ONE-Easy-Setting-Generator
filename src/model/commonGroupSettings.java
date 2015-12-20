@@ -35,10 +35,7 @@ Group.nrofHosts = 40
 	private static String Group_bufferSize;
 	
 	// the min wait time for each node
-	private static int Group_waitTimeF;
-	
-	// the max wait time for each node
-	private static int Group_waitTimeT;
+	private static String Group_waitTime;
 	
 	// The no of interfaces in each node in group
 	private static int Group_noOfInterfaces;
@@ -47,10 +44,7 @@ Group.nrofHosts = 40
 	private static String Group_interfaceName;
 	
 	//Group nodes min speed 
-	private static float Group_speedF;
-	
-	//Group nodes max speed 
-	private static float Group_speedT;
+	private static String Group_speed;
 
 	// Time to live for each message in the group
 	private static int Group_msgTtl;
@@ -64,6 +58,7 @@ Group.nrofHosts = 40
 	 * @return the group_movementModel
 	 */
 	public static String getGroup_movementModel() {
+		System.out.println();
 		return Group_movementModel;
 	}
 	/**
@@ -159,15 +154,15 @@ Group.nrofHosts = 40
 	/**
 	 * @return the group_waitTimeF
 	 */
-	public static int getGroup_waitTimeF() {
-		return Group_waitTimeF;
+	public static String getGroup_waitTime() {
+		return Group_waitTime;
 	}
 	/**
 	 * @param group_waitTimeF the group_waitTimeF to set
 	 * @throws IOException 
 	 */
-	public static void setGroup_waitTimeF(int group_waitTimeF) throws IOException {
-		Group_waitTimeF = group_waitTimeF;
+	public static void setGroup_waitTime(String group_waitTime) throws IOException {
+		Group_waitTime = group_waitTime;
 		// prepare file (it will resume writing over the file)
 		File file = new File(Scenario_setting.getScenario_name()+".txt");
 
@@ -181,40 +176,11 @@ Group.nrofHosts = 40
 		BufferedWriter bw = new BufferedWriter(fw);
 
 		// writing to file 
-		bw.write("Group.waitTime = "+group_waitTimeF);
+		bw.write("Group.waitTime = "+group_waitTime);
 		//close file 
 		bw.close();
 	}
-	/**
-	 * @return the group_waitTimeT
-	 */
-	public static int getGroup_waitTimeT() {
-		return Group_waitTimeT;
-	}
-	/**
-	 * @param group_waitTimeT the group_waitTimeT to set
-	 * @throws IOException 
-	 */
-	public static void setGroup_waitTimeT(int group_waitTimeT) throws IOException {
-		Group_waitTimeT = group_waitTimeT;
-		// prepare file (it will resume writing over the file)
-		File file = new File(Scenario_setting.getScenario_name()+".txt");
 
-		// if file doesnt exists, then create it
-		if (!file.exists()) {
-			file.createNewFile();
-		}
-		// overwrite any existing file 
-		// start from line 1
-		FileWriter fw = new FileWriter(file.getAbsoluteFile(),true);
-		BufferedWriter bw = new BufferedWriter(fw);
-
-		// writing to file 
-		bw.write(", "+group_waitTimeT);
-		bw.newLine();
-		//close file 
-		bw.close();
-	}
 	/**
 	 * @return the group_noOfInterfaces
 	 */
@@ -278,15 +244,15 @@ Group.nrofHosts = 40
 	/**
 	 * @return the group_speedF
 	 */
-	public static float getGroup_speedF() {
-		return Group_speedF;
+	public static String getGroup_speed() {
+		return Group_speed;
 	}
 	/**
 	 * @param group_speedF the group_speedF to set
 	 * @throws IOException 
 	 */
-	public static void setGroup_speedF(float group_speedF) throws IOException {
-		Group_speedF = group_speedF;
+	public static void setGroup_speed(String group_speedF) throws IOException {
+		Group_speed = group_speedF;
 		// prepare file (it will resume writing over the file)
 		File file = new File(Scenario_setting.getScenario_name()+".txt");
 
@@ -304,36 +270,7 @@ Group.nrofHosts = 40
 		//close file 
 		bw.close();
 	}
-	/**
-	 * @return the group_speedT
-	 */
-	public static float getGroup_speedT() {
-		return Group_speedT;
-	}
-	/**
-	 * @param group_speedT the group_speedT to set
-	 * @throws IOException 
-	 */
-	public static void setGroup_speedT(float group_speedT) throws IOException {
-		Group_speedT = group_speedT;
-		// prepare file (it will resume writing over the file)
-		File file = new File(Scenario_setting.getScenario_name()+".txt");
-
-		// if file doesnt exists, then create it
-		if (!file.exists()) {
-			file.createNewFile();
-		}
-		// overwrite any existing file 
-		// start from line 1
-		FileWriter fw = new FileWriter(file.getAbsoluteFile(),true);
-		BufferedWriter bw = new BufferedWriter(fw);
-
-		// writing to file 
-		bw.write(", "+group_speedT);
-		bw.newLine();
-		//close file 
-		bw.close();
-	}
+	
 	/**
 	 * @return the group_msgTtl
 	 */
