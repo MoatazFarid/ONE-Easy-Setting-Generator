@@ -12,10 +12,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
 
 public class movementModelSettings_view extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField txtMovementmodelrngseed;
+	private JTextField txtMovementmodelworldsize;
+	private JTextField txtMovementmodelwarmup;
+	private JTextField txtMapbasedmovementnrofmapfiles;
 
 	
 	/**
@@ -49,10 +54,11 @@ public class movementModelSettings_view extends JFrame {
 		gbl_panel_headers.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_headers.setLayout(gbl_panel_headers);
 		
-		JLabel lblScenarioSettings = new JLabel("Scenario Settings");
+		JLabel lblScenarioSettings = new JLabel("Movement Model Settings");
 		lblScenarioSettings.setFont(new Font("Tahoma", Font.BOLD, 18));
 		GridBagConstraints gbc_lblScenarioSettings = new GridBagConstraints();
-		gbc_lblScenarioSettings.gridx = 9;
+		gbc_lblScenarioSettings.insets = new Insets(0, 0, 0, 5);
+		gbc_lblScenarioSettings.gridx = 6;
 		gbc_lblScenarioSettings.gridy = 0;
 		panel_headers.add(lblScenarioSettings, gbc_lblScenarioSettings);
 		
@@ -64,11 +70,82 @@ public class movementModelSettings_view extends JFrame {
 		gbc_panel_txtfield.gridy = 1;
 		contentPane.add(panel_txtfield, gbc_panel_txtfield);
 		GridBagLayout gbl_panel_txtfield = new GridBagLayout();
-		gbl_panel_txtfield.columnWidths = new int[]{0};
-		gbl_panel_txtfield.rowHeights = new int[]{0};
-		gbl_panel_txtfield.columnWeights = new double[]{Double.MIN_VALUE};
-		gbl_panel_txtfield.rowWeights = new double[]{Double.MIN_VALUE};
+		gbl_panel_txtfield.columnWidths = new int[]{0, 0, 0, 0};
+		gbl_panel_txtfield.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
+		gbl_panel_txtfield.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_txtfield.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_txtfield.setLayout(gbl_panel_txtfield);
+		
+		JLabel lblMovementmodelrngseed = new JLabel("MovementModel.rngSeed");
+		GridBagConstraints gbc_lblMovementmodelrngseed = new GridBagConstraints();
+		gbc_lblMovementmodelrngseed.insets = new Insets(0, 0, 5, 5);
+		gbc_lblMovementmodelrngseed.anchor = GridBagConstraints.EAST;
+		gbc_lblMovementmodelrngseed.gridx = 1;
+		gbc_lblMovementmodelrngseed.gridy = 1;
+		panel_txtfield.add(lblMovementmodelrngseed, gbc_lblMovementmodelrngseed);
+		
+		txtMovementmodelrngseed = new JTextField();
+		txtMovementmodelrngseed.setText("1");
+		GridBagConstraints gbc_txtMovementmodelrngseed = new GridBagConstraints();
+		gbc_txtMovementmodelrngseed.insets = new Insets(0, 0, 5, 0);
+		gbc_txtMovementmodelrngseed.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtMovementmodelrngseed.gridx = 2;
+		gbc_txtMovementmodelrngseed.gridy = 1;
+		panel_txtfield.add(txtMovementmodelrngseed, gbc_txtMovementmodelrngseed);
+		txtMovementmodelrngseed.setColumns(10);
+		
+		JLabel lblMovementmodelworldsize = new JLabel("MovementModel.worldSize");
+		GridBagConstraints gbc_lblMovementmodelworldsize = new GridBagConstraints();
+		gbc_lblMovementmodelworldsize.anchor = GridBagConstraints.EAST;
+		gbc_lblMovementmodelworldsize.insets = new Insets(0, 0, 5, 5);
+		gbc_lblMovementmodelworldsize.gridx = 1;
+		gbc_lblMovementmodelworldsize.gridy = 2;
+		panel_txtfield.add(lblMovementmodelworldsize, gbc_lblMovementmodelworldsize);
+		
+		txtMovementmodelworldsize = new JTextField();
+		txtMovementmodelworldsize.setText(" 4500, 3400");
+		GridBagConstraints gbc_txtMovementmodelworldsize = new GridBagConstraints();
+		gbc_txtMovementmodelworldsize.insets = new Insets(0, 0, 5, 0);
+		gbc_txtMovementmodelworldsize.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtMovementmodelworldsize.gridx = 2;
+		gbc_txtMovementmodelworldsize.gridy = 2;
+		panel_txtfield.add(txtMovementmodelworldsize, gbc_txtMovementmodelworldsize);
+		txtMovementmodelworldsize.setColumns(10);
+		
+		JLabel lblMovementmodelwarmup = new JLabel("MovementModel.warmup");
+		GridBagConstraints gbc_lblMovementmodelwarmup = new GridBagConstraints();
+		gbc_lblMovementmodelwarmup.anchor = GridBagConstraints.EAST;
+		gbc_lblMovementmodelwarmup.insets = new Insets(0, 0, 5, 5);
+		gbc_lblMovementmodelwarmup.gridx = 1;
+		gbc_lblMovementmodelwarmup.gridy = 3;
+		panel_txtfield.add(lblMovementmodelwarmup, gbc_lblMovementmodelwarmup);
+		
+		txtMovementmodelwarmup = new JTextField();
+		txtMovementmodelwarmup.setText("1000");
+		GridBagConstraints gbc_txtMovementmodelwarmup = new GridBagConstraints();
+		gbc_txtMovementmodelwarmup.insets = new Insets(0, 0, 5, 0);
+		gbc_txtMovementmodelwarmup.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtMovementmodelwarmup.gridx = 2;
+		gbc_txtMovementmodelwarmup.gridy = 3;
+		panel_txtfield.add(txtMovementmodelwarmup, gbc_txtMovementmodelwarmup);
+		txtMovementmodelwarmup.setColumns(10);
+		
+		JLabel lblMapbasedmovementnrofmapfiles = new JLabel("MapBasedMovement.nrofMapFiles");
+		GridBagConstraints gbc_lblMapbasedmovementnrofmapfiles = new GridBagConstraints();
+		gbc_lblMapbasedmovementnrofmapfiles.anchor = GridBagConstraints.EAST;
+		gbc_lblMapbasedmovementnrofmapfiles.insets = new Insets(0, 0, 0, 5);
+		gbc_lblMapbasedmovementnrofmapfiles.gridx = 1;
+		gbc_lblMapbasedmovementnrofmapfiles.gridy = 4;
+		panel_txtfield.add(lblMapbasedmovementnrofmapfiles, gbc_lblMapbasedmovementnrofmapfiles);
+		
+		txtMapbasedmovementnrofmapfiles = new JTextField();
+		txtMapbasedmovementnrofmapfiles.setText("4");
+		GridBagConstraints gbc_txtMapbasedmovementnrofmapfiles = new GridBagConstraints();
+		gbc_txtMapbasedmovementnrofmapfiles.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtMapbasedmovementnrofmapfiles.gridx = 2;
+		gbc_txtMapbasedmovementnrofmapfiles.gridy = 4;
+		panel_txtfield.add(txtMapbasedmovementnrofmapfiles, gbc_txtMapbasedmovementnrofmapfiles);
+		txtMapbasedmovementnrofmapfiles.setColumns(10);
 		
 		JPanel panel_btns = new JPanel();
 		GridBagConstraints gbc_panel_btns = new GridBagConstraints();
