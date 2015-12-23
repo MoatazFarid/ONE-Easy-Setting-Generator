@@ -15,8 +15,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 
 import model.SpecificGroupSettings;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 public class groupSpecificSettings_view extends JFrame {
 
@@ -34,31 +36,15 @@ public class groupSpecificSettings_view extends JFrame {
 	// preparing model
 	SpecificGroupSettings sp = new SpecificGroupSettings();
 	//
-	private static int CurrentinterfaceNO ;  
+	private static int CurrentinterfaceNO=1 ;  
 	
 
 	public static int getCurrentinterfaceNO() {
 		return CurrentinterfaceNO;
 	}
 
-	public static void setCurrentinterfaceNO(int currentinterfaceNO) {
+	public void setCurrentinterfaceNO(int currentinterfaceNO) {
 		CurrentinterfaceNO = currentinterfaceNO;
-	}
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					groupSpecificSettings_view frame = new groupSpecificSettings_view();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
 	}
 
 	/**
@@ -92,7 +78,7 @@ public class groupSpecificSettings_view extends JFrame {
 		gbl_panel_headers.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_headers.setLayout(gbl_panel_headers);
 		
-		JLabel lblScenarioSettings = new JLabel("Group"+CurrentinterfaceNO+" Specific Settings");
+		JLabel lblScenarioSettings = new JLabel("Group"+(CurrentinterfaceNO)+" Specific Settings");
 		lblScenarioSettings.setFont(new Font("Tahoma", Font.BOLD, 18));
 		GridBagConstraints gbc_lblScenarioSettings = new GridBagConstraints();
 		gbc_lblScenarioSettings.insets = new Insets(0, 0, 0, 5);
@@ -292,37 +278,120 @@ public class groupSpecificSettings_view extends JFrame {
 		JButton btnNext = new JButton("Next");
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// start using MODEL
-				SpecificGroupSettings SGS = new SpecificGroupSettings();
-				// set curent interface NO 
-				SGS.setInterfaceNO(getCurrentinterfaceNO());
-				
-				// set group ID
-				// SGS.setGroup_ID();
-				// set OK maps 
-				
-				// set Speed 
-				
-				// bufferSize
-				
-				// set movement Model 
-				
-				// routerFile 
-				
-				// routerType
-				
-				// set waittime
-				
-				// set no of hosts 
-				
-				// next Window 
-				
+				// if current group no is not after the last ,
+				setCurrentinterfaceNO(getCurrentinterfaceNO()+1);
+				if(getCurrentinterfaceNO()>0){
+					if(getCurrentinterfaceNO() <= Scenario_Setting_view.getNoOfGroupHosts()){
+						// start using MODEL
+						// set group ID
+						try {						
+							SpecificGroupSettings.setGroup_ID(getTxtGroupgroupid(),getCurrentinterfaceNO());
+							// set OK maps 
+							SpecificGroupSettings.setGroup_okMaps(getTxtGroupokmaps());
+							// set Speed 
+							SpecificGroupSettings.setGroup_speed(getTxtGroupspeed());
+							// bufferSize
+							SpecificGroupSettings.setGroup_bufferSize(getTxtGroupbuffersize());
+							// set movement Model 
+							SpecificGroupSettings.setGroup_movementModel(getTxtGroupmovementmodel());
+							// routerFile 
+							SpecificGroupSettings.setGroup_routeFile(getTxtGrouproutefile());
+							// routerType
+							SpecificGroupSettings.setGroup__routeType(getTxtGrouproutetype());
+							// set waittime
+							SpecificGroupSettings.setGroup_waitTime(getTxtGroupwaittime());
+							// set no of hosts 
+							SpecificGroupSettings.setGroup_nrOfHosts(getTxtGroupnrofhosts());
+							
+							// open current window again and again
+							groupSpecificSettings_view sp = new groupSpecificSettings_view();
+							sp.setVisible(true);
+							
+	
+							// dispose current
+							dispose();
+							
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}else{// else open next window
+						// next Window
+						messageCreationParameters_view mc = new messageCreationParameters_view();
+						mc.setVisible(true);
+						dispose();
+					}
+					dispose();
+				}
 			}
+
 		});
 		GridBagConstraints gbc_btnNext = new GridBagConstraints();
 		gbc_btnNext.gridx = 0;
 		gbc_btnNext.gridy = 3;
 		contentPane.add(btnNext, gbc_btnNext);
+		}
+		/**
+		 * @return the txtGroupgroupid
+		 */
+		public String getTxtGroupgroupid() {
+			return txtGroupgroupid.getText();
+		}
+	
+		/**
+		 * @return the txtGroupokmaps
+		 */
+		public int getTxtGroupokmaps() {
+			return Integer.parseInt(txtGroupokmaps.getText());
+		}
+	
+		/**
+		 * @return the txtGroupspeed
+		 */
+		public String getTxtGroupspeed() {
+			return txtGroupspeed.getText();
+		}
+	
+		/**
+		 * @return the txtGroupbuffersize
+		 */
+		public String getTxtGroupbuffersize() {
+			return txtGroupbuffersize.getText();
+		}
+	
+		/**
+		 * @return the txtGroupmovementmodel
+		 */
+		public String getTxtGroupmovementmodel() {
+			return txtGroupmovementmodel.getText();
+		}
+	
+		/**
+		 * @return the txtGrouproutefile
+		 */
+		public String getTxtGrouproutefile() {
+			return txtGrouproutefile.getText();
+		}
+	
+		/**
+		 * @return the txtGrouproutetype
+		 */
+		public String getTxtGrouproutetype() {
+			return txtGrouproutetype.getText();
+		}
+	
+		/**
+		 * @return the txtGroupwaittime
+		 */
+		public String getTxtGroupwaittime() {
+			return txtGroupwaittime.getText();
+		}
+	
+		/**
+		 * @return the txtGroupnrofhosts
+		 */
+		public int getTxtGroupnrofhosts() {
+			return Integer.parseInt(txtGroupnrofhosts.getText());
 		}
 
 }

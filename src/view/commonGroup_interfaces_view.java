@@ -103,6 +103,8 @@ public class commonGroup_interfaces_view extends JFrame {
 						// create new window
 						groupSpecificSettings_view sp = new groupSpecificSettings_view();
 						sp.setVisible(true);
+						//sp.setCurrentinterfaceNO(1);
+
 						// dispose current window 
 						setVisible(false); //you can't see me!
 						

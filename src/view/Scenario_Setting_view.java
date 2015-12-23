@@ -30,9 +30,18 @@ public class Scenario_Setting_view extends JFrame {
 	private JTextField txtScenarioUpdateinterval;
 	private JTextField txtScenarioEndtime;
 	private JTextField txtScenarioMaxhopcount;
-	private JTextField txtScenarioNrofhostgroups;
-	private JTextField txtNoOfEvent;
+	private static JTextField txtScenarioNrofhostgroups;
+	private static JTextField txtNoOfEvent;
 	private JTextField txtScenarioSimulateConnections;
+	
+	private static int noOfGroupHosts;
+
+	/**
+	 * @return the noOfGroupHosts
+	 */
+	public static int getNoOfGroupHosts() {
+		return getTxtScenarioNrofhostgroups();
+	}
 
 	/**
 	 * Launch the application.
@@ -313,14 +322,14 @@ public class Scenario_Setting_view extends JFrame {
 	/**
 	 * @return the txtScenarioNrofhostgroups
 	 */
-	public int getTxtScenarioNrofhostgroups() {
+	public static int getTxtScenarioNrofhostgroups() {
 		return Integer.parseInt(txtScenarioNrofhostgroups.getText());
 	}
 
 	/**
 	 * @return the txtNoOfEvent
 	 */
-	public int getTxtNoOfEvent() {
+	public static int getTxtNoOfEvent() {
 		return Integer.parseInt(txtNoOfEvent.getText());
 	}
 

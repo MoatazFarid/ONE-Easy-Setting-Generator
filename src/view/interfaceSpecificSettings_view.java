@@ -29,22 +29,6 @@ public class interfaceSpecificSettings_view extends JFrame {
 	private JTextField txtHighspeedinterfacetransmitrange;
 
 	/**
-	 * Launch the application.
-	 *//*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					interfaceSpecificSettings_view frame = new interfaceSpecificSettings_view(title);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-*/
-	/**
 	 * Create the frame.
 	 */
 	public interfaceSpecificSettings_view(String sn) {
