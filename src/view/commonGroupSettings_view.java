@@ -29,9 +29,9 @@ public class commonGroupSettings_view extends JFrame {
 	private JTextField txtGroupbuffersize;
 	private JTextField txtGroupwaittime;
 	private JTextField txtGroupnrofinterfaces;
-	private JTextField txtGroupspeed;
-	private JTextField txtGroupmsgttl;
-	private JTextField txtGroupnrofhosts;
+	private static JTextField txtGroupspeed;
+	private static JTextField txtGroupmsgttl;
+	private static JTextField txtGroupnrofhosts;
 	
 	// interface Counter
 	// used for opening interfaces jFrames
@@ -279,25 +279,10 @@ public class commonGroupSettings_view extends JFrame {
 							in.setVisible(true);
 							in.setAlwaysOnTop (true);
 							opened = false;
+							setVisible(false);
+
 						}else{
 							// finish the interfaces
-							setVisible(true);
-							//set group speed 
-							commonGroupSettings.setGroup_speed(getTxtGroupspeed());
-							
-							//set msg ttl 
-							commonGroupSettings.setGroup_msgTtl(getTxtGroupmsgttl());
-							
-							//set group no of hosts 
-							commonGroupSettings.setGroup_nrOfHosts(getTxtGroupnrofhosts());
-							
-//							if(getInterfaceCount() == TotalNoOfInterfacesPerGroup){
-//								// open next window
-//									
-							// dispose current window 
-							setVisible(false); //you can't see me!
-							dispose(); //Destroy the JFrame object
-		
 							
 						}
 		
@@ -353,21 +338,21 @@ public class commonGroupSettings_view extends JFrame {
 	/**
 	 * @return the txtGroupspeed
 	 */
-	public String getTxtGroupspeed() {
+	public static String getTxtGroupspeed() {
 		return txtGroupspeed.getText();
 	}
 
 	/**
 	 * @return the txtGroupmsgttl
 	 */
-	public int getTxtGroupmsgttl() {
+	public static int getTxtGroupmsgttl() {
 		return Integer.parseInt(txtGroupmsgttl.getText());
 	}
 
 	/**
 	 * @return the txtGroupnrofhosts
 	 */
-	public int getTxtGroupnrofhosts() {
+	public static int getTxtGroupnrofhosts() {
 		return Integer.parseInt(txtGroupnrofhosts.getText());
 	}
 

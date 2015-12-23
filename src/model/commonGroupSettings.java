@@ -177,6 +177,7 @@ Group.nrofHosts = 40
 
 		// writing to file 
 		bw.write("Group.waitTime = "+group_waitTime);
+		bw.newLine();
 		//close file 
 		bw.close();
 	}
@@ -267,6 +268,7 @@ Group.nrofHosts = 40
 
 		// writing to file 
 		bw.write("Group.speed = "+group_speedF);
+		bw.newLine();
 		//close file 
 		bw.close();
 	}

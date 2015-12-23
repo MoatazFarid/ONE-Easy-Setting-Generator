@@ -83,17 +83,35 @@ public class commonGroup_interfaces_view extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// set interface no and name 
 				try {
-					commonGroupSettings.setGroup_interfaceName(txtInterfacetype.getText(),interfaceNo+1);
 					commonGroupSettings_view.setInterfaceCount(commonGroupSettings_view.getInterfaceCount()+1);
-
+					commonGroupSettings.setGroup_interfaceName(txtInterfacetype.getText(),commonGroupSettings_view.getInterfaceCount());
+					interfaceNo = commonGroupSettings_view.getInterfaceCount();
 					//new window
-					if(interfaceNo != commonGroupSettings_view.TotalNoOfInterfacesPerGroup){
+					if(commonGroupSettings_view.getInterfaceCount() != commonGroupSettings_view.TotalNoOfInterfacesPerGroup){
 						commonGroup_interfaces_view GS = new commonGroup_interfaces_view();
 						GS.setVisible(true);
+					}else{
+						//set group speed 
+						commonGroupSettings.setGroup_speed(commonGroupSettings_view.getTxtGroupspeed());
+						
+						//set msg ttl 
+						commonGroupSettings.setGroup_msgTtl(commonGroupSettings_view.getTxtGroupmsgttl());
+						
+						//set group no of hosts 
+						commonGroupSettings.setGroup_nrOfHosts(commonGroupSettings_view.getTxtGroupnrofhosts());
+						
+						// create new window
+						groupSpecificSettings_view sp = new groupSpecificSettings_view();
+						sp.setVisible(true);
+						// dispose current window 
+						setVisible(false); //you can't see me!
+						
+						dispose(); //Destroy the JFrame object
+
 					}
 					
 					// dispose current window
-					commonGroupSettings_view.setInterfaceCount(0);
+//					commonGroupSettings_view.setInterfaceCount(0);
 					setVisible(false); //you can't see me!
 					dispose(); //Destroy the JFrame object
 					
