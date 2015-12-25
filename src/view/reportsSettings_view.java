@@ -14,12 +14,19 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 
+import model.ReportsSettings;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+
 public class reportsSettings_view extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtReportnrofreports;
 	private JTextField txtReportwarmup;
 	private JTextField txtReportreportdir;
+	private static int noOfReports;
 
 	
 
@@ -144,10 +151,54 @@ public class reportsSettings_view extends JFrame {
 		panel_btns.setLayout(gbl_panel_btns);
 		
 		JButton btnNext = new JButton("Next");
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// models operations
+				try {
+					
+					ReportsSettings.setNrOfReports(Integer.parseInt(txtReportnrofreports.getText()));
+					ReportsSettings.setWarmup(Integer.parseInt(txtReportwarmup.getText()));
+					ReportsSettings.setReportDir(txtReportreportdir.getText());
+				
+				
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				// open new window
+				reportsSettings_reports_view rp = new reportsSettings_reports_view();
+				rp.setVisible(true);
+				
+				// dispose
+				dispose();
+			}
+		});
 		GridBagConstraints gbc_btnNext = new GridBagConstraints();
 		gbc_btnNext.gridx = 0;
 		gbc_btnNext.gridy = 3;
 		contentPane.add(btnNext, gbc_btnNext);
 		}
+
+
+
+	/**
+	 * @return the noOfReports
+	 */
+	public static int getNoOfReports() {
+		return noOfReports;
+	}
+
+
+
+	/**
+	 * @param noOfReports the noOfReports to set
+	 */
+	public static void setNoOfReports(int noOfReports) {
+		reportsSettings_view.noOfReports = noOfReports;
+	}
 
 }

@@ -13,29 +13,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
+
+import model.ReportsSettings;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 public class reportsSettings_reports_view extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtReportreport;
+	private static int currentReport = 1;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					reportsSettings_reports_view frame = new reportsSettings_reports_view();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -68,7 +58,7 @@ public class reportsSettings_reports_view extends JFrame {
 		gbl_panel_headers.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_headers.setLayout(gbl_panel_headers);
 		
-		JLabel lblScenarioSettings = new JLabel("Report<>");
+		JLabel lblScenarioSettings = new JLabel("Report"+getCurrentReport());
 		lblScenarioSettings.setFont(new Font("Tahoma", Font.BOLD, 18));
 		GridBagConstraints gbc_lblScenarioSettings = new GridBagConstraints();
 		gbc_lblScenarioSettings.insets = new Insets(0, 0, 0, 5);
@@ -90,7 +80,7 @@ public class reportsSettings_reports_view extends JFrame {
 		gbl_panel_txtfield.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel_txtfield.setLayout(gbl_panel_txtfield);
 		
-		JLabel lblReportreport = new JLabel("Report.report1");
+		JLabel lblReportreport = new JLabel("Report.report"+getCurrentReport());
 		GridBagConstraints gbc_lblReportreport = new GridBagConstraints();
 		gbc_lblReportreport.insets = new Insets(0, 0, 0, 5);
 		gbc_lblReportreport.anchor = GridBagConstraints.EAST;
@@ -124,6 +114,30 @@ public class reportsSettings_reports_view extends JFrame {
 		JButton btnNext = new JButton("Next");
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(getCurrentReport()>0){
+						// operation of model 
+					try {
+						ReportsSettings.setNrOfCurrentReport(getCurrentReport());
+						ReportsSettings.setReportName(txtReportreport.getText());
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					// increment window counter 
+					setCurrentReport(getCurrentReport()+1);
+					//open window 
+					if(getCurrentReport() <= ReportsSettings.getNrOfReports()){
+						// case repeat window 
+						reportsSettings_reports_view rp = new reportsSettings_reports_view();
+						rp.setVisible(true);
+					}else{
+						// case next window
+						optimizationSettings_view op = new optimizationSettings_view();
+						op.setVisible(true);
+					}
+				}
+				// dispose
+				dispose();
 			}
 		});
 		GridBagConstraints gbc_btnNext = new GridBagConstraints();
@@ -131,5 +145,21 @@ public class reportsSettings_reports_view extends JFrame {
 		gbc_btnNext.gridy = 3;
 		contentPane.add(btnNext, gbc_btnNext);
 		}
+
+
+	/**
+	 * @return the currentReport
+	 */
+	public static int getCurrentReport() {
+		return currentReport;
+	}
+
+
+	/**
+	 * @param currentReport the currentReport to set
+	 */
+	public static void setCurrentReport(int currentReport) {
+		reportsSettings_reports_view.currentReport = currentReport;
+	}
 
 }

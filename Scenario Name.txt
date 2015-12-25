@@ -92,3 +92,17 @@ MovementModel.mapFile1 = 4
 MovementModel.mapFile2 = 4
 MovementModel.mapFile3 = 4
 MovementModel.mapFile4 = 4
+
+
+
++===== Reports Settings ============+
+# how many reports to load
+Report.nrofReports = 2
+# length of the warm up period (simulated seconds)
+Report.warmup = 0
+# default directory of reports (can be overridden per Report with output setting)
+Report.reportDir = reports/
+# default directory of reports (can be overridden per Report with output setting)
+Report.report1 = MessageStatsReport
+# default directory of reports (can be overridden per Report with output setting)
+Report.report2 = MessageStatsReport
