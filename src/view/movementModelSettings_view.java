@@ -14,6 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 
+import model.MovementModelSettings;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+
 public class movementModelSettings_view extends JFrame {
 
 	private JPanel contentPane;
@@ -21,6 +27,8 @@ public class movementModelSettings_view extends JFrame {
 	private JTextField txtMovementmodelworldsize;
 	private JTextField txtMovementmodelwarmup;
 	private JTextField txtMapbasedmovementnrofmapfiles;
+	
+	private static int NoOfMaps;
 
 	
 	/**
@@ -103,7 +111,7 @@ public class movementModelSettings_view extends JFrame {
 		panel_txtfield.add(lblMovementmodelworldsize, gbc_lblMovementmodelworldsize);
 		
 		txtMovementmodelworldsize = new JTextField();
-		txtMovementmodelworldsize.setText(" 4500, 3400");
+		txtMovementmodelworldsize.setText("4500, 3400");
 		GridBagConstraints gbc_txtMovementmodelworldsize = new GridBagConstraints();
 		gbc_txtMovementmodelworldsize.insets = new Insets(0, 0, 5, 0);
 		gbc_txtMovementmodelworldsize.fill = GridBagConstraints.HORIZONTAL;
@@ -162,10 +170,54 @@ public class movementModelSettings_view extends JFrame {
 		panel_btns.setLayout(gbl_panel_btns);
 		
 		JButton btnNext = new JButton("Next");
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// set no of maps 
+				setNoOfMaps(Integer.parseInt(txtMapbasedmovementnrofmapfiles.getText()));
+				
+				// model operations
+				try {
+					
+					MovementModelSettings.setRngSeed(Integer.parseInt(txtMovementmodelrngseed.getText()));
+					MovementModelSettings.setWorldSize(txtMovementmodelworldsize.getText());
+					MovementModelSettings.setWormup(Integer.parseInt(txtMovementmodelwarmup.getText()));
+					MovementModelSettings.setNrOfMapSize(Integer.parseInt(txtMapbasedmovementnrofmapfiles.getText()));
+					
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				//opening next frame
+				movementModelSettings_MapFiles_view mv = new movementModelSettings_MapFiles_view();
+				mv.setVisible(true);
+				// dispose
+				dispose();
+				
+			}
+		});
 		GridBagConstraints gbc_btnNext = new GridBagConstraints();
 		gbc_btnNext.gridx = 0;
 		gbc_btnNext.gridy = 3;
 		contentPane.add(btnNext, gbc_btnNext);
 		}
+
+
+	/**
+	 * @return the noOfMaps
+	 */
+	public static int getNoOfMaps() {
+		return NoOfMaps;
+	}
+
+
+	/**
+	 * @param noOfMaps the noOfMaps to set
+	 */
+	public static void setNoOfMaps(int noOfMaps) {
+		NoOfMaps = noOfMaps;
+	}
 
 }

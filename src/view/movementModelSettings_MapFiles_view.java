@@ -14,10 +14,17 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 
+import model.MovementModelSettings;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+
 public class movementModelSettings_MapFiles_view extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtMapbasedmovementmapfile;
+	private static int currentMapNo =1 ;
 
 
 	/**
@@ -51,7 +58,7 @@ public class movementModelSettings_MapFiles_view extends JFrame {
 		gbl_panel_headers.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_headers.setLayout(gbl_panel_headers);
 		
-		JLabel lblScenarioSettings = new JLabel("Map Files");
+		JLabel lblScenarioSettings = new JLabel("Map Files ( Map"+getCurrentMapNo()+" )");
 		lblScenarioSettings.setFont(new Font("Tahoma", Font.BOLD, 18));
 		GridBagConstraints gbc_lblScenarioSettings = new GridBagConstraints();
 		gbc_lblScenarioSettings.insets = new Insets(0, 0, 0, 5);
@@ -73,7 +80,7 @@ public class movementModelSettings_MapFiles_view extends JFrame {
 		gbl_panel_txtfield.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel_txtfield.setLayout(gbl_panel_txtfield);
 		
-		JLabel lblMapbasedmovementmapfile = new JLabel("MapBasedMovement.mapFile1");
+		JLabel lblMapbasedmovementmapfile = new JLabel("MapBasedMovement.mapFile"+getCurrentMapNo()+"");
 		GridBagConstraints gbc_lblMapbasedmovementmapfile = new GridBagConstraints();
 		gbc_lblMapbasedmovementmapfile.insets = new Insets(0, 0, 0, 5);
 		gbc_lblMapbasedmovementmapfile.anchor = GridBagConstraints.EAST;
@@ -105,10 +112,56 @@ public class movementModelSettings_MapFiles_view extends JFrame {
 		panel_btns.setLayout(gbl_panel_btns);
 		
 		JButton btnNext = new JButton("Next");
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(getCurrentMapNo()>0){
+					try {
+						MovementModelSettings.setCurrentMapNo(getCurrentMapNo());
+						MovementModelSettings.setMapFile(txtMapbasedmovementmapfile.getText());
+						
+						//increase current 
+						setCurrentMapNo(getCurrentMapNo()+1);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					if(getCurrentMapNo() <= movementModelSettings_view.getNoOfMaps()){
+						
+						// open that window again
+						movementModelSettings_MapFiles_view mf = new movementModelSettings_MapFiles_view();
+						mf.setVisible(true);
+						
+					}else{
+						// open next window
+						reportsSettings_view rp = new reportsSettings_view();
+						rp.setVisible(true);
+					}
+				}
+				// dispose current 
+				dispose();
+			}
+		});
 		GridBagConstraints gbc_btnNext = new GridBagConstraints();
 		gbc_btnNext.gridx = 0;
 		gbc_btnNext.gridy = 3;
 		contentPane.add(btnNext, gbc_btnNext);
 		}
+
+
+	/**
+	 * @return the currentMapNo
+	 */
+	public static int getCurrentMapNo() {
+		return currentMapNo;
+	}
+
+
+	/**
+	 * @param currentMapNo the currentMapNo to set
+	 */
+	public static void setCurrentMapNo(int currentMapNo) {
+		movementModelSettings_MapFiles_view.currentMapNo = currentMapNo;
+	}
 
 }
