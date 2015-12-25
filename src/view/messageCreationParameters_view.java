@@ -30,7 +30,7 @@ public class messageCreationParameters_view extends JFrame {
 	private JTextField txtEventsprefix;
 
 	// no of current event (to deal with current opened window) 
-	private static int CurrenteventNO = 0 ;
+	private static int CurrenteventNO = 1 ;
 	
 	// dealing with model
 	MessageCreationParameters mcp = new MessageCreationParameters();
@@ -66,7 +66,7 @@ public class messageCreationParameters_view extends JFrame {
 		gbl_panel_headers.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_headers.setLayout(gbl_panel_headers);
 		
-		JLabel lblScenarioSettings = new JLabel("Message Creation Parameters");
+		JLabel lblScenarioSettings = new JLabel("Message Creation Parameters (EVENT "+getCurrenteventNO()+")");
 		lblScenarioSettings.setFont(new Font("Tahoma", Font.BOLD, 18));
 		GridBagConstraints gbc_lblScenarioSettings = new GridBagConstraints();
 		gbc_lblScenarioSettings.insets = new Insets(0, 0, 0, 5);
@@ -88,7 +88,7 @@ public class messageCreationParameters_view extends JFrame {
 		gbl_panel_txtfield.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_txtfield.setLayout(gbl_panel_txtfield);
 		
-		JLabel lblEventsclass = new JLabel("Events1.class");
+		JLabel lblEventsclass = new JLabel("Events"+getCurrenteventNO()+".class");
 		GridBagConstraints gbc_lblEventsclass = new GridBagConstraints();
 		gbc_lblEventsclass.insets = new Insets(0, 0, 5, 5);
 		gbc_lblEventsclass.anchor = GridBagConstraints.EAST;
@@ -106,7 +106,7 @@ public class messageCreationParameters_view extends JFrame {
 		panel_txtfield.add(txtEventsclass, gbc_txtEventsclass);
 		txtEventsclass.setColumns(10);
 		
-		JLabel lblEventsinterval = new JLabel("Events1.interval");
+		JLabel lblEventsinterval = new JLabel("Events"+getCurrenteventNO()+".interval");
 		GridBagConstraints gbc_lblEventsinterval = new GridBagConstraints();
 		gbc_lblEventsinterval.anchor = GridBagConstraints.EAST;
 		gbc_lblEventsinterval.insets = new Insets(0, 0, 5, 5);
@@ -124,7 +124,7 @@ public class messageCreationParameters_view extends JFrame {
 		panel_txtfield.add(txtEventsinterval, gbc_txtEventsinterval);
 		txtEventsinterval.setColumns(10);
 		
-		JLabel lblEventssize = new JLabel("Events1.size");
+		JLabel lblEventssize = new JLabel("Events"+getCurrenteventNO()+".size");
 		GridBagConstraints gbc_lblEventssize = new GridBagConstraints();
 		gbc_lblEventssize.anchor = GridBagConstraints.EAST;
 		gbc_lblEventssize.insets = new Insets(0, 0, 5, 5);
@@ -142,7 +142,7 @@ public class messageCreationParameters_view extends JFrame {
 		panel_txtfield.add(txtEventssize, gbc_txtEventssize);
 		txtEventssize.setColumns(10);
 		
-		JLabel lblEventshosts = new JLabel("Events1.hosts");
+		JLabel lblEventshosts = new JLabel("Events"+getCurrenteventNO()+".hosts");
 		GridBagConstraints gbc_lblEventshosts = new GridBagConstraints();
 		gbc_lblEventshosts.anchor = GridBagConstraints.EAST;
 		gbc_lblEventshosts.insets = new Insets(0, 0, 5, 5);
@@ -160,7 +160,7 @@ public class messageCreationParameters_view extends JFrame {
 		panel_txtfield.add(txtEventshosts, gbc_txtEventshosts);
 		txtEventshosts.setColumns(10);
 		
-		JLabel lblEventsprefix = new JLabel("Events1.prefix");
+		JLabel lblEventsprefix = new JLabel("Events"+getCurrenteventNO()+".prefix");
 		GridBagConstraints gbc_lblEventsprefix = new GridBagConstraints();
 		gbc_lblEventsprefix.anchor = GridBagConstraints.EAST;
 		gbc_lblEventsprefix.insets = new Insets(0, 0, 0, 5);
@@ -195,41 +195,40 @@ public class messageCreationParameters_view extends JFrame {
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// if current group no is not after the last ,
-				setCurrenteventNO(getCurrenteventNO()+1);
-				MessageCreationParameters.setCurrentEventNo(getCurrenteventNO());
 
 				if(getCurrenteventNO()>0){
 					if(getCurrenteventNO() <= Scenario_Setting_view.getTxtNoOfEvent()){
-						// start using MODEL
-						// set group ID
-												
+						// start using MODEL	
 							// filling MODEL 
-							
 							try {
+								MessageCreationParameters.setCurrentEventNo(getCurrenteventNO());
 								MessageCreationParameters.setEventClass(txtEventsclass.getText());
 								MessageCreationParameters.setEventInterval(txtEventsinterval.getText());
 								MessageCreationParameters.setEventHost(txtEventshosts.getText());
 								MessageCreationParameters.setEventSize(txtEventssize.getText());
 								MessageCreationParameters.setEventPrefix(txtEventsprefix.getText());
-						
+
+								// increase Counter 
+								setCurrenteventNO(getCurrenteventNO()+1);
+//								MessageCreationParameters.setCurrentEventNo(getCurrenteventNO()+1);
+
 							// filling MODEL END 
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 							// open current window again and again
-							messageCreationParameters_view sp = new messageCreationParameters_view();
-							sp.setVisible(true);
-							
-							// dispose current
-							dispose();
-						
-					}else{// else open next window
-						// next Window
-						movementModelSettings_view mc = new movementModelSettings_view();
-						mc.setVisible(true);
-						dispose();
+							if(getCurrenteventNO() <= Scenario_Setting_view.getTxtNoOfEvent())
+							{
+								messageCreationParameters_view sp = new messageCreationParameters_view();
+								sp.setVisible(true);
+							}else{
+								movementModelSettings_view mc = new movementModelSettings_view();
+								mc.setVisible(true);
+								dispose();
+							}							
 					}
+					//dispose current
 					dispose();
 				}
 			}

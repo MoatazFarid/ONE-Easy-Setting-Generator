@@ -204,7 +204,7 @@ public class Scenario_Setting_view extends JFrame {
 		panel_txtfield.add(lblScenarioNrofhostgroups, gbc_lblScenarioNrofhostgroups);
 		
 		txtScenarioNrofhostgroups = new JTextField();
-		txtScenarioNrofhostgroups.setText("5");
+		txtScenarioNrofhostgroups.setText("2");
 		GridBagConstraints gbc_txtScenarioNrofhostgroups = new GridBagConstraints();
 		gbc_txtScenarioNrofhostgroups.insets = new Insets(0, 0, 5, 0);
 		gbc_txtScenarioNrofhostgroups.fill = GridBagConstraints.HORIZONTAL;
@@ -221,7 +221,7 @@ public class Scenario_Setting_view extends JFrame {
 		panel_txtfield.add(lblNoOfEventGenerators, gbc_lblNoOfEventGenerators);
 		
 		txtNoOfEvent = new JTextField();
-		txtNoOfEvent.setText("1");
+		txtNoOfEvent.setText("2");
 		GridBagConstraints gbc_txtNoOfEvent = new GridBagConstraints();
 		gbc_txtNoOfEvent.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtNoOfEvent.gridx = 5;

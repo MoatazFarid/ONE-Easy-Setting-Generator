@@ -279,9 +279,9 @@ public class groupSpecificSettings_view extends JFrame {
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// if current group no is not after the last ,
-				setCurrentinterfaceNO(getCurrentinterfaceNO()+1);
+				//if(getCurrentinterfaceNO()!= 1)setCurrentinterfaceNO(getCurrentinterfaceNO()+1);
 				if(getCurrentinterfaceNO()>0){
-					if(getCurrentinterfaceNO() <= Scenario_Setting_view.getNoOfGroupHosts()){
+					if(getCurrentinterfaceNO() < Scenario_Setting_view.getNoOfGroupHosts()){
 						// start using MODEL
 						// set group ID
 						try {						
@@ -303,6 +303,7 @@ public class groupSpecificSettings_view extends JFrame {
 							// set no of hosts 
 							SpecificGroupSettings.setGroup_nrOfHosts(getTxtGroupnrofhosts());
 							
+							setCurrentinterfaceNO(getCurrentinterfaceNO()+1);
 							// open current window again and again
 							groupSpecificSettings_view sp = new groupSpecificSettings_view();
 							sp.setVisible(true);
