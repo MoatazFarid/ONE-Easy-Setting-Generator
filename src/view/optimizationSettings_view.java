@@ -13,8 +13,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
+
+import model.OptimizationSettings;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 public class optimizationSettings_view extends JFrame {
 
@@ -127,6 +131,23 @@ public class optimizationSettings_view extends JFrame {
 		JButton btnNext = new JButton("Next");
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//model operation 
+				try {
+					OptimizationSettings.setCellSizeMult(Integer.parseInt(txtOptimizationcellsizemult.getText()));
+					OptimizationSettings.setRandomizeUpdateOrder(txtOptimizationrandomizeupdateorder.getText());
+
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// next windows
+				guiSettings_view gui = new guiSettings_view();
+				gui.setVisible(true);
+				// dispose
+				dispose();
 			}
 		});
 		GridBagConstraints gbc_btnNext = new GridBagConstraints();

@@ -1,21 +1,13 @@
-
- #
-
- ## Default settings Generated for the simulation
-
- #
-
- ## Scenario settings
-
- Scenario.name = Scenario Name
-
- Scenario.simulateConnections = false
-
- Scenario.updateInterval = 0.1
-
- Scenario.maxhopcount = 2
-
- Scenario.nrofHostGroups = 2
+#
+## Default settings Generated for the simulation
+#
+## Scenario settings
+Scenario.name = default_scenario
+Scenario.simulateConnections = false
+Scenario.updateInterval = 0.1
+Scenario.endTime = 43333
+Scenario.maxhopcount = 2
+Scenario.nrofHostGroups = 2
 
  # How many event generators
 
@@ -35,8 +27,8 @@ highspeedInterface.type = SimpleBroadcastInterface
 # How many event generators
 highspeedInterface.transmitRange = 1000
 highspeedInterface.transmitSpeed = 10M
-+=====Group-specific Settings============+
-+=====Common Settings============+
+#+=====Group-specific Settings============+
+##+=====Common Settings============+
 Group.movementModel = ShortestPathMapBasedMovement
 Group.router = SprayAndWaitRouterHopLimitedVersion
 Group.bufferSize = 5M
@@ -46,16 +38,18 @@ Group.interface1 = btInterface
 Group.speed = 0.5 , 1.5
 Group.msgTtl = 300
 Group.nrofHosts = 40
-+=====Group1-specific Settings============+
+#+=====Group1-specific Settings============+
 Group1.groupID = a
 # cars can drive only on roads
 Group1.okMaps = 1
-Group1.speed = 2.7, 13.9Group1.bufferSize = 50M
+Group1.speed = 2.7, 13.9
+Group1.bufferSize = 50M
 Group1.movementModel = MapRouteMovement
 Group1.routeFile = data/tram3.wkt
 Group1.routeType = 1
-Group1.waitTime = 10, 30Group1.nrofHosts = 5
-+===== Message creation parameters Settings============+
+Group1.waitTime = 10, 30
+Group1.nrofHosts = 5
+#+===== Message creation parameters Settings============+
 # Class of the first event generator
 Events1.class = MessageEventGenerator
 # Creation interval in seconds (one new message every 25 to 35 seconds)
@@ -66,7 +60,7 @@ Events1.hosts = 0,126
 Events1.size = 500k,1M
 # Message ID prefix
 Events1.prefix = M
-+===== Message creation parameters Settings============+
+#+===== Message creation parameters Settings============+
 # Class of the first event generator
 Events2.class = MessageEventGenerator
 # Creation interval in seconds (one new message every 25 to 35 seconds)
@@ -77,32 +71,3 @@ Events2.hosts = 0,126
 Events2.size = 500k,1M
 # Message ID prefix
 Events2.prefix = M
-
-
-+===== Movement model Settings============+
-# seed for movement models' pseudo random number generator (default = 0)
-MovementModel.rngSeed = 1
-# World's size for Movement Models without implicit size (width, height; meters)
-MovementModel.worldSize = 4500, 3400
-# How long time to move hosts in the world before real simulation
-MovementModel.wormup = 1000
-## Map based movement -movement model specific settings
-MovementModel.nrofMapFiles = 4
-MovementModel.mapFile1 = 4
-MovementModel.mapFile2 = 4
-MovementModel.mapFile3 = 4
-MovementModel.mapFile4 = 4
-
-
-
-+===== Reports Settings ============+
-# how many reports to load
-Report.nrofReports = 2
-# length of the warm up period (simulated seconds)
-Report.warmup = 0
-# default directory of reports (can be overridden per Report with output setting)
-Report.reportDir = reports/
-# default directory of reports (can be overridden per Report with output setting)
-Report.report1 = MessageStatsReport
-# default directory of reports (can be overridden per Report with output setting)
-Report.report2 = MessageStatsReport

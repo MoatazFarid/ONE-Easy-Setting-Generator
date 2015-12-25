@@ -80,7 +80,7 @@ public class movementModelSettings_MapFiles_view extends JFrame {
 		gbl_panel_txtfield.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel_txtfield.setLayout(gbl_panel_txtfield);
 		
-		JLabel lblMapbasedmovementmapfile = new JLabel("MapBasedMovement.mapFile"+getCurrentMapNo()+"");
+		JLabel lblMapbasedmovementmapfile = new JLabel("MapBasedMovement.mapFile"+getCurrentMapNo());
 		GridBagConstraints gbc_lblMapbasedmovementmapfile = new GridBagConstraints();
 		gbc_lblMapbasedmovementmapfile.insets = new Insets(0, 0, 0, 5);
 		gbc_lblMapbasedmovementmapfile.anchor = GridBagConstraints.EAST;

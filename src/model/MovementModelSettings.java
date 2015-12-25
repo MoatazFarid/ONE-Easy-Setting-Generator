@@ -61,7 +61,7 @@ public class MovementModelSettings {
 		// writing to file 
 		bw.newLine();
 		bw.newLine();
-		bw.write("+===== Movement model Settings============+");
+		bw.write("#+===== Movement model Settings============+");
 		bw.newLine();
 		
 		bw.write("# seed for movement models' pseudo random number generator (default = 0)");
@@ -133,7 +133,7 @@ public class MovementModelSettings {
 		bw.write("# How long time to move hosts in the world before real simulation");
 		bw.newLine();
 
-		bw.write("MovementModel.wormup = "+wormup);
+		bw.write("MovementModel.warmup = "+wormup);
 		bw.newLine();
 		//close file 
 		bw.close();
@@ -166,7 +166,7 @@ public class MovementModelSettings {
 		bw.write("## Map based movement -movement model specific settings");
 		bw.newLine();
 
-		bw.write("MovementModel.nrofMapFiles = "+nrOfMapSize);
+		bw.write("MapBasedMovement.nrofMapFiles = "+nrOfMapSize);
 		bw.newLine();
 		//close file 
 		bw.close();
@@ -196,7 +196,7 @@ public class MovementModelSettings {
 
 		// writing to file 
 
-		bw.write("MovementModel.mapFile"+getCurrentMapNo()+" = "+nrOfMapSize);
+		bw.write("MapBasedMovement.mapFile"+getCurrentMapNo()+" = "+mapFile);
 		bw.newLine();
 		//close file 
 		bw.close();

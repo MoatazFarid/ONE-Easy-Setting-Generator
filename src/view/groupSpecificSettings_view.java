@@ -281,7 +281,7 @@ public class groupSpecificSettings_view extends JFrame {
 				// if current group no is not after the last ,
 				//if(getCurrentinterfaceNO()!= 1)setCurrentinterfaceNO(getCurrentinterfaceNO()+1);
 				if(getCurrentinterfaceNO()>0){
-					if(getCurrentinterfaceNO() < Scenario_Setting_view.getNoOfGroupHosts()){
+					if(getCurrentinterfaceNO() <= Scenario_Setting_view.getNoOfGroupHosts()){
 						// start using MODEL
 						// set group ID
 						try {						
@@ -304,11 +304,17 @@ public class groupSpecificSettings_view extends JFrame {
 							SpecificGroupSettings.setGroup_nrOfHosts(getTxtGroupnrofhosts());
 							
 							setCurrentinterfaceNO(getCurrentinterfaceNO()+1);
-							// open current window again and again
-							groupSpecificSettings_view sp = new groupSpecificSettings_view();
-							sp.setVisible(true);
-							
-	
+							if(getCurrentinterfaceNO() < Scenario_Setting_view.getNoOfGroupHosts()){
+								// open current window again and again
+								groupSpecificSettings_view sp = new groupSpecificSettings_view();
+								sp.setVisible(true);
+							}							
+							else{// else open next window
+								// next Window
+								messageCreationParameters_view mc = new messageCreationParameters_view();
+								mc.setVisible(true);
+								dispose();
+							}
 							// dispose current
 							dispose();
 							
@@ -316,11 +322,6 @@ public class groupSpecificSettings_view extends JFrame {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-					}else{// else open next window
-						// next Window
-						messageCreationParameters_view mc = new messageCreationParameters_view();
-						mc.setVisible(true);
-						dispose();
 					}
 					dispose();
 				}

@@ -119,7 +119,7 @@ public class Scenario_Setting_view extends JFrame {
 		panel_txtfield.add(lblScenarioName, gbc_lblScenarioName);
 		
 		txtScenarioName = new JTextField();
-		txtScenarioName.setText("Scenario Name");
+		txtScenarioName.setText("default_scenario");
 		GridBagConstraints gbc_txtScenarioName = new GridBagConstraints();
 		gbc_txtScenarioName.insets = new Insets(0, 0, 5, 0);
 		gbc_txtScenarioName.fill = GridBagConstraints.HORIZONTAL;
@@ -255,6 +255,8 @@ public class Scenario_Setting_view extends JFrame {
 					
 					//Scenario_updateInterval
 					Scenario_setting.setScenario_updateInterval(getTxtScenarioUpdateinterval());
+					
+					Scenario_setting.setScenario_endTime(getTxtScenarioEndtime());
 					
 					//Scenario_maxhopcount
 					Scenario_setting.setScenario_maxhopcount(getTxtScenarioMaxhopcount());

@@ -14,6 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 
+import model.GUISettings;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+
 public class guiSettings_view extends JFrame {
 
 	private JPanel contentPane;
@@ -23,21 +29,6 @@ public class guiSettings_view extends JFrame {
 	private JTextField txtGuiunderlayimagerotate;
 	private JTextField txtGuieventlogpanelnrofevents;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					guiSettings_view frame = new guiSettings_view();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -196,6 +187,27 @@ public class guiSettings_view extends JFrame {
 		panel_btns.setLayout(gbl_panel_btns);
 		
 		JButton btnNext = new JButton("Next");
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				//model operation
+					try {
+						GUISettings.setUnderlayImagelink(txtGuiunderlayimagefilename.getText());
+						GUISettings.setUnderlayImageOffset(txtGuiunderlayimageoffset.getText());
+						GUISettings.setUnderlayImageState(txtGuiunderlayimagescale.getText());
+						GUISettings.setUnderlayImageRotate(txtGuiunderlayimagerotate.getText());
+						GUISettings.setEventLogPanelNoOfEvents(txtGuieventlogpanelnrofevents.getText());
+						
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				// next windows
+					// Congratulations you have finally finished 
+				// dispose
+				dispose();
+			}
+		});
 		GridBagConstraints gbc_btnNext = new GridBagConstraints();
 		gbc_btnNext.gridx = 0;
 		gbc_btnNext.gridy = 3;

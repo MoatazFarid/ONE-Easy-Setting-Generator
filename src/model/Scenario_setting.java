@@ -37,15 +37,15 @@ public class Scenario_setting {
 		FileWriter fw = new FileWriter(file.getAbsoluteFile());
 		BufferedWriter bw = new BufferedWriter(fw);
 		// writing to file 
-		bw.write("\n #");
+		bw.write("#");
 		bw.newLine();
-		bw.write("\n ## Default settings Generated for the simulation");
+		bw.write("## Default settings Generated for the simulation");
 		bw.newLine();
-		bw.write("\n #");
+		bw.write("#");
 		bw.newLine();
-		bw.write("\n ## Scenario settings");
+		bw.write("## Scenario settings");
 		bw.newLine();
-		bw.write("\n Scenario.name = "+scenario_name);
+		bw.write("Scenario.name = "+scenario_name);
 		bw.newLine();
 		
 		// close the file 
@@ -76,9 +76,9 @@ public class Scenario_setting {
 		FileWriter fw = new FileWriter(file.getAbsoluteFile(),true);
 		BufferedWriter bw = new BufferedWriter(fw);
 		if(scenario_simulateConnections)
-			bw.write("\n /n Scenario.simulateConnections = true");
+			bw.write("Scenario.simulateConnections = true");
 		else
-			bw.write("\n Scenario.simulateConnections = false");
+			bw.write("Scenario.simulateConnections = false");
 		bw.newLine();		
 		bw.close();
 	}
@@ -104,7 +104,7 @@ public class Scenario_setting {
 
 		FileWriter fw = new FileWriter(file.getAbsoluteFile(),true);
 		BufferedWriter bw = new BufferedWriter(fw);
-		String myst = "\n Scenario.updateInterval = "+scenario_updateInterval;
+		String myst = "Scenario.updateInterval = "+scenario_updateInterval;
 		bw.write(myst);
 		bw.newLine();
 		bw.close();
@@ -121,16 +121,7 @@ public class Scenario_setting {
 	 */
 	public static void setScenario_endTime(int scenario_endTime) throws IOException {
 		Scenario_endTime = scenario_endTime;
-/*
-		// prepare writing to file 
-		PrintWriter writer = new PrintWriter(getScenario_name()+".txt", "UTF-8");
-		
-		// writing to file 
-		writer.println("# 43200s == 12h");
-		writer.println("Scenario.endTime = "+scenario_endTime);
-		
-		//close file 
-		writer.close();*/
+
 		File file = new File(getScenario_name()+".txt");
 
 		// if file doesnt exists, then create it
@@ -140,7 +131,7 @@ public class Scenario_setting {
 
 		FileWriter fw = new FileWriter(file.getAbsoluteFile(),true);
 		BufferedWriter bw = new BufferedWriter(fw);
-		String myst ="\n Scenario.endTime = "+scenario_endTime; 
+		String myst ="Scenario.endTime = "+scenario_endTime; 
 		bw.write(myst);
 		bw.newLine();		
 		bw.close();
@@ -167,7 +158,7 @@ public class Scenario_setting {
 
 		FileWriter fw = new FileWriter(file.getAbsoluteFile(),true);
 		BufferedWriter bw = new BufferedWriter(fw);
-		String myst ="\n Scenario.maxhopcount = "+scenario_maxhopcount;
+		String myst ="Scenario.maxhopcount = "+scenario_maxhopcount;
 		bw.write(myst);
 		bw.newLine();
 		bw.close();
@@ -194,7 +185,7 @@ public class Scenario_setting {
 
 		FileWriter fw = new FileWriter(file.getAbsoluteFile(),true);
 		BufferedWriter bw = new BufferedWriter(fw);
-		bw.write("\n Scenario.nrofHostGroups = "+scenario_nrofHostGroups);
+		bw.write("Scenario.nrofHostGroups = "+scenario_nrofHostGroups);
 		bw.newLine();
 		
 		//closing file

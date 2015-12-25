@@ -74,7 +74,7 @@ public class MessageCreationParameters {
 		BufferedWriter bw = new BufferedWriter(fw);
 
 		// writing to file 
-		bw.write("+===== Message creation parameters Settings============+");
+		bw.write("#+===== Message creation parameters Settings============+");
 		bw.newLine();
 		
 		bw.write("# Class of the first event generator");

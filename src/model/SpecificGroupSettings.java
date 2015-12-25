@@ -79,7 +79,7 @@ public class SpecificGroupSettings{
 		BufferedWriter bw = new BufferedWriter(fw);
 
 		// writing to file 
-		bw.write("+=====Group"+interfaceNo+"-specific Settings============+");
+		bw.write("#+=====Group"+interfaceNo+"-specific Settings============+");
 		bw.newLine();
 
 		bw.write("Group"+interfaceNo+".groupID = "+group_ID);
@@ -158,6 +158,7 @@ public class SpecificGroupSettings{
 
 		// writing to file 
 		bw.write("Group"+getInterfaceNO()+".speed = "+group_speedF);
+		bw.newLine();
 		//close file 
 		bw.close();
 	}
@@ -309,6 +310,7 @@ public class SpecificGroupSettings{
 
 		// writing to file 
 		bw.write("Group"+getInterfaceNO()+".waitTime = "+group_waitTimeF);
+		bw.newLine();
 		//close file 
 		bw.close();
 	}

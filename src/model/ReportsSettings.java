@@ -49,7 +49,7 @@ public class ReportsSettings {
 		bw.newLine();
 		bw.newLine();
 		bw.newLine();
-		bw.write("+===== Reports Settings ============+");
+		bw.write("#+===== Reports Settings ============+");
 		bw.newLine();
 		
 		bw.write("# how many reports to load");

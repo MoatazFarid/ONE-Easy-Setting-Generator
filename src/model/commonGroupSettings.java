@@ -80,9 +80,9 @@ Group.nrofHosts = 40
 		BufferedWriter bw = new BufferedWriter(fw);
 
 		// writing to file 
-		bw.write("+=====Group-specific Settings============+");
+		bw.write("#+=====Group-specific Settings============+");
 		bw.newLine();
-		bw.write("+=====Common Settings============+");
+		bw.write("##+=====Common Settings============+");
 		bw.newLine();
 		bw.write("Group.movementModel = "+group_movementModel);
 		bw.newLine();
