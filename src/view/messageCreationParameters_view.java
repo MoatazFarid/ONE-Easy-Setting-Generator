@@ -30,7 +30,7 @@ public class messageCreationParameters_view extends JFrame {
 	private JTextField txtEventsprefix;
 
 	// no of current event (to deal with current opened window) 
-	private static int CurrenteventNO = 1 ;
+	private static int CurrenteventNO = 0 ;
 	
 	// dealing with model
 	MessageCreationParameters mcp = new MessageCreationParameters();
@@ -97,7 +97,7 @@ public class messageCreationParameters_view extends JFrame {
 		panel_txtfield.add(lblEventsclass, gbc_lblEventsclass);
 		
 		txtEventsclass = new JTextField();
-		txtEventsclass.setText("Events1.class");
+		txtEventsclass.setText("MessageEventGenerator");
 		GridBagConstraints gbc_txtEventsclass = new GridBagConstraints();
 		gbc_txtEventsclass.insets = new Insets(0, 0, 5, 0);
 		gbc_txtEventsclass.fill = GridBagConstraints.HORIZONTAL;
@@ -115,7 +115,7 @@ public class messageCreationParameters_view extends JFrame {
 		panel_txtfield.add(lblEventsinterval, gbc_lblEventsinterval);
 		
 		txtEventsinterval = new JTextField();
-		txtEventsinterval.setText("Events1.interval");
+		txtEventsinterval.setText("25,35");
 		GridBagConstraints gbc_txtEventsinterval = new GridBagConstraints();
 		gbc_txtEventsinterval.insets = new Insets(0, 0, 5, 0);
 		gbc_txtEventsinterval.fill = GridBagConstraints.HORIZONTAL;
@@ -133,7 +133,7 @@ public class messageCreationParameters_view extends JFrame {
 		panel_txtfield.add(lblEventssize, gbc_lblEventssize);
 		
 		txtEventssize = new JTextField();
-		txtEventssize.setText("Events1.size");
+		txtEventssize.setText("500k,1M");
 		GridBagConstraints gbc_txtEventssize = new GridBagConstraints();
 		gbc_txtEventssize.insets = new Insets(0, 0, 5, 0);
 		gbc_txtEventssize.fill = GridBagConstraints.HORIZONTAL;
@@ -151,7 +151,7 @@ public class messageCreationParameters_view extends JFrame {
 		panel_txtfield.add(lblEventshosts, gbc_lblEventshosts);
 		
 		txtEventshosts = new JTextField();
-		txtEventshosts.setText("Events1.hosts");
+		txtEventshosts.setText("0,126");
 		GridBagConstraints gbc_txtEventshosts = new GridBagConstraints();
 		gbc_txtEventshosts.insets = new Insets(0, 0, 5, 0);
 		gbc_txtEventshosts.fill = GridBagConstraints.HORIZONTAL;
@@ -169,7 +169,7 @@ public class messageCreationParameters_view extends JFrame {
 		panel_txtfield.add(lblEventsprefix, gbc_lblEventsprefix);
 		
 		txtEventsprefix = new JTextField();
-		txtEventsprefix.setText("Events1.prefix");
+		txtEventsprefix.setText("M");
 		GridBagConstraints gbc_txtEventsprefix = new GridBagConstraints();
 		gbc_txtEventsprefix.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtEventsprefix.gridx = 2;
@@ -196,28 +196,34 @@ public class messageCreationParameters_view extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// if current group no is not after the last ,
 				setCurrenteventNO(getCurrenteventNO()+1);
+				MessageCreationParameters.setCurrentEventNo(getCurrenteventNO());
+
 				if(getCurrenteventNO()>0){
 					if(getCurrenteventNO() <= Scenario_Setting_view.getTxtNoOfEvent()){
 						// start using MODEL
 						// set group ID
-						try {						
+												
 							// filling MODEL 
 							
-							
+							try {
+								MessageCreationParameters.setEventClass(txtEventsclass.getText());
+								MessageCreationParameters.setEventInterval(txtEventsinterval.getText());
+								MessageCreationParameters.setEventHost(txtEventshosts.getText());
+								MessageCreationParameters.setEventSize(txtEventssize.getText());
+								MessageCreationParameters.setEventPrefix(txtEventsprefix.getText());
+						
 							// filling MODEL END 
-
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 							// open current window again and again
 							messageCreationParameters_view sp = new messageCreationParameters_view();
 							sp.setVisible(true);
 							
-	
 							// dispose current
 							dispose();
-							
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+						
 					}else{// else open next window
 						// next Window
 						movementModelSettings_view mc = new movementModelSettings_view();
