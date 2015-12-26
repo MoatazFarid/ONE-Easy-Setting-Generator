@@ -49,6 +49,17 @@ Group1.routeFile = data/tram3.wkt
 Group1.routeType = 1
 Group1.waitTime = 10, 30
 Group1.nrofHosts = 5
+#+=====Group2-specific Settings============+
+Group2.groupID = v
+# cars can drive only on roads
+Group2.okMaps = 1
+Group2.speed = 2.7, 13.9
+Group2.bufferSize = 50M
+Group2.movementModel = MapRouteMovement
+Group2.routeFile = data/tram3.wkt
+Group2.routeType = 1
+Group2.waitTime = 10, 30
+Group2.nrofHosts = 5
 #+===== Message creation parameters Settings============+
 # Class of the first event generator
 Events1.class = MessageEventGenerator
@@ -70,4 +81,54 @@ Events2.hosts = 0,126
 # Message sizes (500kB - 1MB)
 Events2.size = 500k,1M
 # Message ID prefix
-Events2.prefix = M
+Events2.prefix = U
+
+
+#+===== Movement model Settings============+
+# seed for movement models' pseudo random number generator (default = 0)
+MovementModel.rngSeed = 1
+# World's size for Movement Models without implicit size (width, height; meters)
+MovementModel.worldSize = 4500, 3400
+# How long time to move hosts in the world before real simulation
+MovementModel.warmup = 1000
+## Map based movement -movement model specific settings
+MapBasedMovement.nrofMapFiles = 4
+MapBasedMovement.mapFile1 = data/roads.wkt
+MapBasedMovement.mapFile2 = data/main_roads.wkt
+MapBasedMovement.mapFile3 = data/pedestrian_paths.wkt
+MapBasedMovement.mapFile4 = data/shops.wkt 
+
+
+
+#+===== Reports Settings ============+
+# how many reports to load
+Report.nrofReports = 2
+# length of the warm up period (simulated seconds)
+Report.warmup = 0
+# default directory of reports (can be overridden per Report with output setting)
+Report.reportDir = reports/
+# default directory of reports (can be overridden per Report with output setting)
+Report.report1 = MessageStatsReport
+# default directory of reports (can be overridden per Report with output setting)
+Report.report2 = DeliveredMessagesReport
+
+
+
+#+===== Optimization Settings============+
+## see World class for details.
+Optimization.cellSizeMult = 5
+Optimization.randomizeUpdateOrder = true
+
+
+
+#+===== GUI Settings============+
+# GUI underlay image settings
+GUI.UnderlayImage.fileName = data/helsinki_underlay.png
+# Image offset in pixels (x, y)
+GUI.UnderlayImage.offset = 64, 20
+# Scaling factor for the image
+GUI.UnderlayImage.scale = 4.75
+# Image rotation (radians)
+GUI.UnderlayImage.rotate = -0.015
+# how many events to show in the log panel (default = 30)
+GUI.EventLogPanel.nrofEvents = 100

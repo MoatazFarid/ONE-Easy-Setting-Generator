@@ -34,7 +34,7 @@ public class groupSpecificSettings_view extends JFrame {
 	private JTextField txtGroupnrofhosts;
 
 	// preparing model
-	SpecificGroupSettings sp = new SpecificGroupSettings();
+	//SpecificGroupSettings sp = new SpecificGroupSettings();
 	//
 	private static int CurrentinterfaceNO=1 ;  
 	
@@ -278,53 +278,97 @@ public class groupSpecificSettings_view extends JFrame {
 		JButton btnNext = new JButton("Next");
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// if current group no is not after the last ,
-				//if(getCurrentinterfaceNO()!= 1)setCurrentinterfaceNO(getCurrentinterfaceNO()+1);
-				if(getCurrentinterfaceNO()>0){
+//				// if current group no is not after the last ,
+//				//if(getCurrentinterfaceNO()!= 1)setCurrentinterfaceNO(getCurrentinterfaceNO()+1);
+//				if(getCurrentinterfaceNO()>0){
+//					if(getCurrentinterfaceNO() < Scenario_Setting_view.getNoOfGroupHosts()){
+//						// start using MODEL
+//						// set group ID
+//						try {						
+//							SpecificGroupSettings.setGroup_ID(getTxtGroupgroupid(),getCurrentinterfaceNO());
+//							// set OK maps 
+//							SpecificGroupSettings.setGroup_okMaps(getTxtGroupokmaps());
+//							// set Speed 
+//							SpecificGroupSettings.setGroup_speed(getTxtGroupspeed());
+//							// bufferSize
+//							SpecificGroupSettings.setGroup_bufferSize(getTxtGroupbuffersize());
+//							// set movement Model 
+//							SpecificGroupSettings.setGroup_movementModel(getTxtGroupmovementmodel());
+//							// routerFile 
+//							SpecificGroupSettings.setGroup_routeFile(getTxtGrouproutefile());
+//							// routerType
+//							SpecificGroupSettings.setGroup__routeType(getTxtGrouproutetype());
+//							// set waittime
+//							SpecificGroupSettings.setGroup_waitTime(getTxtGroupwaittime());
+//							// set no of hosts 
+//							SpecificGroupSettings.setGroup_nrOfHosts(getTxtGroupnrofhosts());
+//							
+//							setCurrentinterfaceNO(getCurrentinterfaceNO()+1);
+//							// open current window again and again
+//							groupSpecificSettings_view sp = new groupSpecificSettings_view();
+//							sp.setVisible(true);
+//							
+//	
+//							// dispose current
+//							dispose();
+//							
+//						} catch (IOException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
+//					}else{// else open next window
+//						// next Window
+//						messageCreationParameters_view mc = new messageCreationParameters_view();
+//						mc.setVisible(true);
+//						dispose();
+//					}
+//					dispose();
+//				}
+				
+				/////////////////////////////////////////////////
+				if(getCurrentinterfaceNO() >0 ){
 					if(getCurrentinterfaceNO() <= Scenario_Setting_view.getNoOfGroupHosts()){
-						// start using MODEL
-						// set group ID
-						try {						
+						// model operations
+						try {
 							SpecificGroupSettings.setGroup_ID(getTxtGroupgroupid(),getCurrentinterfaceNO());
-							// set OK maps 
+							
+	//						// set OK maps 
 							SpecificGroupSettings.setGroup_okMaps(getTxtGroupokmaps());
-							// set Speed 
+	//						// set Speed 
 							SpecificGroupSettings.setGroup_speed(getTxtGroupspeed());
-							// bufferSize
+	//						// bufferSize
 							SpecificGroupSettings.setGroup_bufferSize(getTxtGroupbuffersize());
-							// set movement Model 
+	//						// set movement Model 
 							SpecificGroupSettings.setGroup_movementModel(getTxtGroupmovementmodel());
-							// routerFile 
+	//						// routerFile 
 							SpecificGroupSettings.setGroup_routeFile(getTxtGrouproutefile());
-							// routerType
+	//						// routerType
 							SpecificGroupSettings.setGroup__routeType(getTxtGrouproutetype());
-							// set waittime
+	//						// set waittime
 							SpecificGroupSettings.setGroup_waitTime(getTxtGroupwaittime());
-							// set no of hosts 
+	//						// set no of hosts 
 							SpecificGroupSettings.setGroup_nrOfHosts(getTxtGroupnrofhosts());
-							
-							setCurrentinterfaceNO(getCurrentinterfaceNO()+1);
-							if(getCurrentinterfaceNO() < Scenario_Setting_view.getNoOfGroupHosts()){
-								// open current window again and again
-								groupSpecificSettings_view sp = new groupSpecificSettings_view();
-								sp.setVisible(true);
-							}							
-							else{// else open next window
-								// next Window
-								messageCreationParameters_view mc = new messageCreationParameters_view();
-								mc.setVisible(true);
-								dispose();
-							}
-							// dispose current
-							dispose();
-							
+	//						
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						// incerement current interface no 
+						setCurrentinterfaceNO(getCurrentinterfaceNO()+1);
+						// window 
+						if(getCurrentinterfaceNO() <= Scenario_Setting_view.getNoOfGroupHosts()){
+							// repeat window
+							groupSpecificSettings_view gr1 = new groupSpecificSettings_view();
+							gr1.setVisible(true);
+						}else{
+							// next window
+							messageCreationParameters_view mc = new messageCreationParameters_view();
+							mc.setVisible(true);
+						}
 					}
-					dispose();
 				}
+				// dispose 
+				dispose();
 			}
 
 		});

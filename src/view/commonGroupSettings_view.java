@@ -119,7 +119,7 @@ public class commonGroupSettings_view extends JFrame {
 		panel_txtfield.add(lblGrouprouter, gbc_lblGrouprouter);
 		
 		txtGroupRouter = new JTextField();
-		txtGroupRouter.setText("SprayAndWaitRouterHopLimitedVersion");
+		txtGroupRouter.setText("EpidemicRouter");
 		GridBagConstraints gbc_txtGroupRouter = new GridBagConstraints();
 		gbc_txtGroupRouter.insets = new Insets(0, 0, 5, 0);
 		gbc_txtGroupRouter.fill = GridBagConstraints.HORIZONTAL;
